@@ -3,7 +3,7 @@ from llm import GPT
 from lookup import lookup
 import re
 
-REQUEST_LIMIT = 10
+REQUEST_LIMIT = 15
 
 def search_loop(task, model):
     past_searches = []
@@ -64,10 +64,10 @@ def search_loop(task, model):
             print("Warning: The model did not conduct a search and did not finish. This should not happen.")
     #print("The model has finished.")
 
-    with open("log.txt", "w") as log_file:
+    with open("out/log.txt", "w") as log_file:
         log_file.write("\n\n=========================\n\n".join(log))
 
-    with open("responses.txt", "w") as responses_file:
+    with open("out/reasoning.md", "w") as responses_file:
         responses_file.write("\n\n=========================\n\n".join(responses))
 
     return responses

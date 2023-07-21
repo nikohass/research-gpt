@@ -1,6 +1,7 @@
 key.json
-log.txt
-responses.txt
+out/log.txt
+test.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
