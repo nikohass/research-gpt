@@ -57,8 +57,6 @@ def search_loop(task, model):
             if len(get_searches) > 1:
                 print("Warning: The model wants to conduct multiple searches. Only the first search will be conducted.")
         elif "FINISH" in response:
-            # The model wants to finish
-            print("The model wants to finish.")
             break
         else:
             print("Warning: The model did not conduct a search and did not finish. This should not happen.")
@@ -76,6 +74,8 @@ def complete_task(task, model):
     responses = search_loop(task, model)
     summary_prompt = create_summary_prompt(task, responses)
     summary_response = model.get_response(summary_prompt)
+    with open("out/summary.md", "w") as summary_file:
+        summary_file.write(f"{task}\n\n{summary_response}\n\n")
     return summary_response
 
 if __name__ == "__main__":
